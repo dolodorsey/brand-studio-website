@@ -46,7 +46,12 @@ export default function Home() {
 
   return (
     <>
-      <div className={`preloader ${!preloaderVisible ? 'hidden' : ''}`}>
+      <div className={`
+      .grain-overlay::after { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9998; opacity: 0.04; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+      @keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.08); } }
+      @keyframes pulse { 0%,100% { opacity: 0.8; transform: scale(1); } 50% { opacity: 1; transform: scale(1.05); } }
+preloader ${!preloaderVisible ? 'hidden' : ''}`}>
         <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(32px, 6vw, 56px)', fontWeight: 300, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--light)', marginBottom: 12 }}>Brand Studio</div>
         <div style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--accent)', opacity: 0.6 }}>The Kollective Hospitality Group</div>
       </div>
@@ -65,6 +70,7 @@ export default function Home() {
 
       {/* HERO */}
       <section style={{ position: 'relative', height: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+      <img src="https://dzlmtvodpyhetvektfuo.supabase.co/storage/v1/object/public/brand-graphics/dr_dorsey/website/rooftop-lounge.jpg" alt="" style={{position:"absolute",top:0,left:0,width:"100%",height:"100%",objectFit:"cover",opacity:0.2,animation:"slowZoom 20s ease-in-out infinite alternate",zIndex:0}} />
         <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
           <img src={`${S}/dr_dorsey/website/hero-bg.jpg`} alt="" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.3 }} />
           <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 2, background: 'linear-gradient(180deg, rgba(10,10,15,0.4) 0%, rgba(10,10,15,0.05) 35%, rgba(10,10,15,0.05) 55%, rgba(10,10,15,0.8) 85%, #0A0A0F 100%)' }} />
